@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reporte_Tecnico.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="informe-t%C3%A9cnico">Informe Técnico</h1>
+<h2 id="normalizaci%C3%B3n-a-tercera-forma-normal-3fn-y-an%C3%A1lisis-de-performance-en-sql-server">Normalización a Tercera Forma Normal (3FN) y Análisis de Performance en SQL Server</h2>
+<p><strong>Proyecto:</strong> LegacyRetail<br>
+<strong>Diplomado:</strong> Gestión de Datos – 2026<br>
+<strong>Estudiante:</strong> Karen Suarez</p>
+<hr>
+<h2 id="1-introducci%C3%B3n">1. Introducción</h2>
+<p>Durante varios años, LegacyRetail S.A. almacenó la información de sus ventas en un archivo plano sin ningún tipo de estructura relacional. Este archivo contenía todos los datos mezclados en una sola tabla, lo que dificultaba el análisis, generaba datos repetidos y provocaba errores al momento de realizar consultas.</p>
+<p>Al intentar migrar esta información directamente a SQL Server, se evidenciaron múltiples problemas tanto a nivel de diseño como de rendimiento. Por esta razón, el objetivo de este proyecto fue reorganizar la información aplicando los principios de la <strong>Tercera Forma Normal (3FN)</strong> y analizar cómo un buen diseño impacta directamente en el performance de las consultas SQL.</p>
+<p>El trabajo se divide en dos partes principales:</p>
+<ul>
+<li><strong>Misión A:</strong> Normalización del modelo de datos.</li>
+<li><strong>Misión B:</strong> Análisis de rendimiento y comparación de consultas.</li>
+</ul>
+<hr>
+<h2 id="2-misi%C3%B3n-a--normalizaci%C3%B3n-del-modelo-de-datos">2. Misión A — Normalización del Modelo de Datos</h2>
+<hr>
+<h3 id="21-an%C3%A1lisis-inicial-del-problema">2.1 Análisis inicial del problema</h3>
+<p>El primer problema identificado fue que toda la información se encontraba en una sola estructura, donde se repetían constantemente los datos de clientes, productos y sucursales. Por ejemplo, un mismo cliente aparecía varias veces con el mismo correo electrónico, y una misma sucursal se repetía en múltiples registros de ventas.</p>
+<p>Esto generaba:</p>
+<ul>
+<li>Redundancia de información</li>
+<li>Riesgo de inconsistencias</li>
+<li>Dificultad para mantener los datos actualizados</li>
+</ul>
+<p>Antes de normalizar, fue necesario entender qué información correspondía realmente a cada entidad del negocio.</p>
+<hr>
+<h3 id="22-limpieza-del-entorno-de-trabajo">2.2 Limpieza del entorno de trabajo</h3>
+<p>Antes de comenzar con el diseño del modelo relacional, se realizó una limpieza completa del entorno de trabajo, eliminando todas las tablas existentes y asegurando que la base de datos <code>LegacyRetail</code> estuviera lista para una nueva implementación.</p>
+<p><img src="capturas/A1_limpieza_tablas.png.jpeg" alt="A1 Limpieza de tablas"></p>
+<p>Este paso fue clave para evitar errores causados por ejecuciones previas y para poder validar correctamente cada etapa del proceso.</p>
+<hr>
+<h3 id="23-creaci%C3%B3n-de-la-tabla-de-staging-rawventas">2.3 Creación de la tabla de staging (RawVentas)</h3>
+<p>Se creó la tabla <code>RawVentas</code> como una tabla de staging, cuyo objetivo fue almacenar los datos originales del archivo CSV sin aplicar transformaciones inmediatas.</p>
+<p><img src="capturas/A2_creacion_rawventas.png.jpeg" alt="A2 Creación de RawVentas"></p>
+<p>Durante esta etapa se identificaron varios problemas en los datos, como espacios en blanco, diferencias en el formato de texto y repetición de información, lo cual confirmó la necesidad de normalizar el modelo.</p>
+<hr>
+<h3 id="24-dise%C3%B1o-y-creaci%C3%B3n-de-las-tablas-normalizadas">2.4 Diseño y creación de las tablas normalizadas</h3>
+<p>Luego del análisis de los datos crudos, se definieron las entidades principales del sistema y se crearon las siguientes tablas:</p>
+<ul>
+<li>Clientes</li>
+<li>Productos</li>
+<li>Sucursales</li>
+<li>Ventas</li>
+</ul>
+<p>Cada tabla fue diseñada con una clave primaria y con atributos que dependen únicamente de dicha clave, cumpliendo con los principios de la Tercera Forma Normal.</p>
+<p><img src="capturas/A3_tablas_normalizadas.png.jpeg" alt="A3 Tablas normalizadas"></p>
+<p>La tabla <code>Ventas</code> se definió como la tabla central del modelo, encargada de relacionar a los clientes, productos y sucursales.</p>
+<hr>
+<h3 id="25-carga-de-datos-y-dificultades-encontradas">2.5 Carga de datos y dificultades encontradas</h3>
+<p>Durante la carga de datos hacia las tablas normalizadas se presentaron algunos retos, especialmente relacionados con la identificación única de los clientes y la eliminación de duplicados.</p>
+<p>Para resolver esto, se utilizó el correo electrónico como identificador único de cliente, permitiendo consolidar múltiples registros repetidos en una sola fila dentro de la tabla <code>Clientes</code>.</p>
+<hr>
+<h3 id="26-validaci%C3%B3n-de-registros-cargados">2.6 Validación de registros cargados</h3>
+<p>Una vez completada la carga, se realizó un conteo de registros para validar que la información se hubiera distribuido correctamente entre las tablas.</p>
+<p>Resultados obtenidos:</p>
+<ul>
+<li>RawVentas: 200 registros</li>
+<li>Clientes: 21 registros</li>
+<li>Productos: 12 registros</li>
+<li>Sucursales: 5 registros</li>
+<li>Ventas: 200 registros</li>
+</ul>
+<p><img src="capturas/A4_conteos_tablas.png.jpeg" alt="A4 Conteo de tablas"></p>
+<p>Estos resultados confirmaron que el proceso de normalización fue exitoso y que la redundancia fue eliminada.</p>
+<hr>
+<h3 id="27-revisi%C3%B3n-de-la-estructura-de-la-tabla-ventas">2.7 Revisión de la estructura de la tabla Ventas</h3>
+<p>Se revisó la estructura de la tabla <code>Ventas</code> para verificar que los tipos de datos, la clave primaria y las columnas de referencia estuvieran correctamente definidas.</p>
+<p><img src="capturas/A5_estructura_ventas.png.jpeg" alt="A5 Estructura de la tabla Ventas"></p>
+<hr>
+<h3 id="28-validaci%C3%B3n-de-integridad-referencial">2.8 Validación de integridad referencial</h3>
+<p>Finalmente, se validó que las claves foráneas estuvieran correctamente configuradas, asegurando la relación entre las tablas y evitando la inserción de datos inconsistentes.</p>
+<p><img src="capturas/A6_claves_foraneas.png.jpeg" alt="A6 Claves foráneas"></p>
+<hr>
+<h2 id="3-misi%C3%B3n-b--an%C3%A1lisis-de-performance">3. Misión B — Análisis de Performance</h2>
+<hr>
+<h3 id="31-preparaci%C3%B3n-del-entorno-de-pruebas">3.1 Preparación del entorno de pruebas</h3>
+<p>Para analizar el rendimiento de las consultas, se activaron las opciones <code>STATISTICS IO</code> y <code>STATISTICS TIME</code>, lo que permitió observar el consumo de recursos de cada consulta ejecutada.</p>
+<p><img src="capturas/B1_statistics_on.png.jpeg" alt="B1 Statistics ON"></p>
+<hr>
+<h3 id="32-consulta-con-cross-join-y-problemas-detectados">3.2 Consulta con CROSS JOIN y problemas detectados</h3>
+<p>Se ejecutó una consulta utilizando <code>CROSS JOIN</code> entre las tablas <code>Clientes</code> y <code>Productos</code>. Esta consulta generó un producto cartesiano, combinando todos los registros de ambas tablas.</p>
+<p><img src="capturas/B2_cross_join_query.png.jpeg" alt="B2 Consulta CROSS JOIN"></p>
+<hr>
+<h3 id="33-resultados-y-m%C3%A9tricas-del-cross-join">3.3 Resultados y métricas del CROSS JOIN</h3>
+<p>El resultado de esta consulta generó una gran cantidad de filas sin relación real de negocio, lo que se reflejó directamente en un aumento del consumo de recursos.</p>
+<p><img src="capturas/B3_resultados_cross_join.png.jpeg" alt="B3 Resultados CROSS JOIN"></p>
+<p>Las métricas obtenidas mostraron un alto número de lecturas lógicas, evidenciando que este tipo de consulta no es adecuada para este escenario.</p>
+<p><img src="capturas/B4_metricas_cross_join.png.jpeg" alt="B4 Métricas CROSS JOIN"></p>
+<hr>
+<h3 id="34-consulta-optimizada-con-inner-join">3.4 Consulta optimizada con INNER JOIN</h3>
+<p>Posteriormente, se ejecutó una consulta utilizando <code>INNER JOIN</code>, relacionando correctamente las tablas a través de la tabla <code>Ventas</code>.</p>
+<p><img src="capturas/B6_resultados_inner_join.png.jpeg" alt="B6 Resultados INNER JOIN"></p>
+<p>Esta consulta devolvió únicamente los registros con relación real, reduciendo significativamente el consumo de recursos.</p>
+<hr>
+<h2 id="4-comparaci%C3%B3n-de-resultados">4. Comparación de Resultados</h2>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>CROSS JOIN</th>
+<th>INNER JOIN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relación de negocio</td>
+<td>No existe</td>
+<td>Correcta</td>
+</tr>
+<tr>
+<td>Filas generadas</td>
+<td>Excesivas</td>
+<td>Necesarias</td>
+</tr>
+<tr>
+<td>Lecturas lógicas</td>
+<td>Altas</td>
+<td>Reducidas</td>
+</tr>
+<tr>
+<td>Rendimiento</td>
+<td>Bajo</td>
+<td>Optimizado</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="5-conclusiones-y-aprendizajes">5. Conclusiones y Aprendizajes</h2>
+<ul>
+<li>La normalización permitió organizar la información de manera clara y estructurada.</li>
+<li>Separar las entidades redujo la redundancia y mejoró la calidad de los datos.</li>
+<li>Un mal uso de <code>CROSS JOIN</code> puede generar graves problemas de rendimiento.</li>
+<li>El uso adecuado de <code>INNER JOIN</code> mejora considerablemente la eficiencia de las consultas.</li>
+<li>El análisis de métricas es fundamental para justificar decisiones técnicas.</li>
+</ul>
+<p>Este proyecto permitió comprender la importancia del diseño de bases de datos y cómo este impacta directamente en el rendimiento y la estabilidad de un sistema.</p>
+<h3 id="diagrama-entidad%E2%80%93relaci%C3%B3n-der">Diagrama Entidad–Relación (DER)</h3>
+<p>El siguiente diagrama representa el modelo relacional normalizado a Tercera Forma Normal (3FN), donde las entidades Clientes, Productos y Sucursales se relacionan a través de la tabla Ventas, la cual actúa como tabla central del modelo.</p>
+<p><img src="capturas/DER_LegacyRetail.png" alt="DER LegacyRetail"></p>
+
+</body>
+</html>
